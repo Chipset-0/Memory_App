@@ -1,4 +1,9 @@
 .card-list-container
 {
-    
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    background-image: url("../src/assets/Grass_Tile.png");
+    padding: 32px;
+    border: 8px solid gray
 }

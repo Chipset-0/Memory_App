@@ -16,7 +16,7 @@ function shuffle(array)
     return arr;
 }
 
-export default function CardList({category, cardAmount=30})
+export default function CardList({cardAmount=30, score, highScore, setScore, setHighScore})
 {
     const [cards, setCards] = useState([])
     
@@ -24,9 +24,6 @@ export default function CardList({category, cardAmount=30})
         const availId = Array.from({length : TOTAL_CARDS}, (_, i) => i+1);
         const shuffled = shuffle(availId);
         const selected = shuffled.slice(0, cardAmount)
-
-        const indices = Array.from({ length: TOTAL_CARDS }, (_, i) => i);
-        const shuffledInd = shuffle(indices);
 
         const generatedCards = selected.map((id, idx) => ({
         pokeId: id,
@@ -37,8 +34,23 @@ export default function CardList({category, cardAmount=30})
     }, [cardAmount]);
     
     const onClickFunc = (clicked) => {
-        console.log(clicked)
+        if(clicked)
+        {
+            console.log("Double Click, End Game")
+            setScore(0);
+        }
+        else
+        {
+            setScore(score+1);
+        }
     }
+
+    useEffect(() => {
+        if (highScore < score)
+        {
+            setHighScore(score)
+        }
+    }, [score])
 
     console.log(cards)
     return (

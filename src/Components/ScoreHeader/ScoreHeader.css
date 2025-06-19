@@ -1,0 +1,17 @@
+.score-horizontal-container
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#reset-button
+{
+    width: fit-content;
+    height: fit-content;
+    padding: 8px 16px;
+    border: solid gray 4px;
+    font-family: 'Orange Kid', sans-serif;
+    justify-self: center;
+    align-self: center;
+    font-size: large;
+}

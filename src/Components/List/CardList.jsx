@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './CardList.css'
 import Card from '../Card/Card'
+import GrassTile from "../../assets/Grass_Tile.png"
 
 const TOTAL_CARDS = 1025
 const VISIBLE_AMOUNT = 30
@@ -61,7 +62,7 @@ export default function CardList({cardAmount=30, score, highScore, setScore, set
 
     console.log(cards)
     return (
-        <div className='card-list-container'>
+        <div className='card-list-container' style={{backgroundImage: `url(${GrassTile})`}}>
             {cards.map((card, index) => (<Card key={index} pokeId={card.pokeId} clickFunction={onClickFunc}/>))}
         </div>
     )

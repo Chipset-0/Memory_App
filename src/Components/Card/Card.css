@@ -4,11 +4,6 @@
     border: 1px solid transparent;
 }
 
-.card-container:hover
-{
-    background-color: rgba(189, 189, 189, 0.575);
-    border: 1px solid black;
-}
 
 .card-image
 {

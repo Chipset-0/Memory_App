@@ -4,6 +4,7 @@ import Card from '../Card/Card'
 
 const TOTAL_CARDS = 1025
 const VISIBLE_AMOUNT = 30
+var POKEMON_ARRAY = new Array(1025).fill(false)
 
 function shuffle(array)
 {
@@ -19,6 +20,7 @@ function shuffle(array)
 export default function CardList({cardAmount=30, score, highScore, setScore, setHighScore})
 {
     const [cards, setCards] = useState([])
+    const [turn, setTurn] = useState(0)
     
     useEffect(() => {
         const availId = Array.from({length : TOTAL_CARDS}, (_, i) => i+1);
@@ -31,18 +33,23 @@ export default function CardList({cardAmount=30, score, highScore, setScore, set
         }));
 
         setCards(generatedCards);
-    }, [cardAmount]);
+    }, [cardAmount, turn]);
     
-    const onClickFunc = (clicked) => {
-        if(clicked)
+    const onClickFunc = (id) => {
+        console.log("Entered")
+        if (POKEMON_ARRAY[id])
         {
             console.log("Double Click, End Game")
             setScore(0);
+            setTurn(0)
         }
         else
         {
-            setScore(score+1);
+            POKEMON_ARRAY[id] = true;
+            setScore(score+1)
+            setTurn(turn+1);
         }
+        console.log(POKEMON_ARRAY)
     }
 
     useEffect(() => {
